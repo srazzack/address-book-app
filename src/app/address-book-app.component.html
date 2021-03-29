@@ -1,0 +1,47 @@
+
+
+<section>
+  <h4>Address Book App</h4>
+  <input type="text" (change)="filterAddressEntries($event.target.value)">
+</section>
+<mat-table [dataSource]="addressEntries$" matSort>
+  <!-- Id Definition -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortAddressEntriesById()">Id</mat-header-cell>
+    <mat-cell *matCellDef="let elem"> {{elem.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Definition -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+    <mat-cell *matCellDef="let elem"> {{elem.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Location Definition -->
+  <ng-container matColumnDef="location">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+    <mat-cell *matCellDef="let elem"> {{elem.price | currency:'USD' }} </mat-cell>
+  </ng-container>
+
+  <!-- Office Definition -->
+  <ng-container matColumnDef="office">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Last Update </mat-header-cell>
+    <mat-cell *matCellDef="let elem"> {{elem.lastUpdate | date:'medium' }} </mat-cell>
+  </ng-container>
+
+  <!-- Phone Entry Definition -->
+  <ng-container matColumnDef="phone">
+    <ng-container matColumnDef="office">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Office </mat-header-cell>
+      <mat-cell *matCellDef="let elem"> {{elem.office}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cellular">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Cellular </mat-header-cell>
+      <mat-cell *matCellDef="let elem"> {{elem.cellular}} </mat-cell>
+    </ng-container>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <mat-header-row *matHeaderRowDef="['id', 'name', 'location', 'office', 'phone']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['id', 'name', 'location', 'office', 'phone']"></mat-row>
+</mat-table>
