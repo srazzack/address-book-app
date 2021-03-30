@@ -38,6 +38,13 @@ export class AddressBookAppComponent  {
     this.store.dispatch(createAddressEntry( {payload: blankEntry}));
   }
 
+  public setCellValue(element) {
+    // TODO: cleanup input implementation to bind to reactiveForms to suibscribe
+    // to ngrx store for the current address entry being edited: need a selector
+    // and reactive forms definition in this component.ts file
+    // dispatch( ... )
+  }
+
   public sortAddressBookEntries() {
 
   }
@@ -51,10 +58,6 @@ export class AddressBookAppComponent  {
   }
 
   public selectRow() {
-
-  }
-
-  public editCell() {
 
   }
 
