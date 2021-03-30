@@ -8,7 +8,7 @@ export const FILTER_ADDRESS_ENTRIES = '[Address Entry] Filter Address Entries';
 
 export const createAddressEntry = createAction(
     CREATE_ADDRESS_ENTRY,
-    props<{ addressEntry: AddressEntry }>()
+    props<{ payload: AddressEntry }>()
 );
 
 export const sortAddressEntries = createAction(

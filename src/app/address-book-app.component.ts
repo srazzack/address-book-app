@@ -21,6 +21,23 @@ export class AddressBookAppComponent  {
     private store: Store<AddressBookAppState>,
   ) {}
 
+  public addRow() {
+    const id = this.generateUniqueId().toString();
+    const blankEntry = {
+      select: '[]',
+      id,
+      name: '',
+      location: '', // string for now; can use a Geo location timestamp
+      office: '',
+      phone: {
+        cellular: '',
+        office: '',
+      }
+    };
+  
+    this.store.dispatch(createAddressEntry( {payload: blankEntry}));
+  }
+
   public sortAddressBookEntries() {
 
   }
@@ -62,7 +79,7 @@ export class AddressBookAppComponent  {
   }
 
   private generateUniqueId() {
-
+    return Math.floor(Math.random() * 10000);
   }
 
 }

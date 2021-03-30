@@ -4,7 +4,8 @@ import { AddressEntry } from '../models/address-entry';
 
 const initialAddressEntries: AddressEntry[] = [
   {
-    id: 1,
+    select: '[]',
+    id: '0000',
     name: 'John Smith',
     location: 'Palo Alto', // string for now; can use a Geo location timestamp
     office: 'C-103',
@@ -16,8 +17,11 @@ const initialAddressEntries: AddressEntry[] = [
 ];
 
 export const addressBookReducer = createReducer<AddressEntry[]>(initialAddressEntries,
-  on(createAddressEntry, (state) => {
-    return {...state}
+  on(createAddressEntry, (state, action) => {
+    console.log(state);
+    console.log(action);
+    console.log([...state, action.payload ]);
+    return [...state, action.payload ];
   }),
   // on(createAddressEntry, (state, action) => {}),
   // on(filterAddressEntries, (state, action) => {})

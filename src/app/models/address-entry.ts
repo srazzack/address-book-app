@@ -1,5 +1,6 @@
 export interface AddressEntry {
-	id: Number;
+	select: String;
+	id: String;
 	name: String;
 	location: String; // string for now; can use a Geo location timestamp
 	office: String;
